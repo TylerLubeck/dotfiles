@@ -37,6 +37,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-markdown'
+Plugin 'scrooloose/nerdtree'
+Plugin 'JarrodCTaylor/vim-python-test-runner'
 Plugin 'vim-scripts/a.vim'
 Plugin 'elzr/vim-json'
 call vundle#end()
@@ -61,3 +63,15 @@ au BufRead,BufNewFile *.ic set filetype=scheme
 set foldmethod=syntax
 set foldlevelstart=1
 let javaScript_fold=1
+
+"For dealing with splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set splitbelow
+set splitright
+
+"For vim airline
+let g:airline#extensions#tabline#enabled = 1

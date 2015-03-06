@@ -115,3 +115,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+# Run twolfson/sexy-bash-prompt
+. ~/.bash_prompt
