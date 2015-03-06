@@ -261,7 +261,7 @@ echo $VIRTUAL_ENV
 
 virtual_env_prompt=""
 if [[ -n $VIRTUAL_ENV ]]; then 
-    virtual_env_prompt=" ($(basename $VIRTUAL_ENV))"; 
+    virtual_env_prompt="($(basename $VIRTUAL_ENV))"; 
 fi
 
 function is_in_virtual_env() {
@@ -272,16 +272,20 @@ function get_virtual_env() {
     echo " $(basename $VIRTUAL_ENV)"; 
 }
 
+function sps() {
+    python -c "import sys; dirs = sys.argv[1].split('/'); print '/'.join(d[:1] for d in dirs[:-1]) + '/' + dirs[-1]" $PWD
+}
+
 # Define the sexy-bash-prompt
 PS1="\[$sexy_bash_prompt_user_color\]\u\[$sexy_bash_prompt_reset\] \
 \[$sexy_bash_prompt_preposition_color\]in\[$sexy_bash_prompt_reset\] \
-\[$sexy_bash_prompt_dir_color\]\w\[$sexy_bash_prompt_reset\]\
+\[$sexy_bash_prompt_dir_color\]$(sps)\[$sexy_bash_prompt_reset\]\
 \$( sexy_bash_prompt_is_on_git && \
   echo -n \" \[$sexy_bash_prompt_preposition_color\]on\[$sexy_bash_prompt_reset\] \" && \
   echo -n \"\[$sexy_bash_prompt_git_status_color\]\$(sexy_bash_prompt_get_git_info)\" && \
   echo -n \"\[$sexy_bash_prompt_git_progress_color\]\$(sexy_bash_prompt_get_git_progress)\" && \
   echo -n \"\[$sexy_bash_prompt_preposition_color\]\")\
 \$( is_in_virtual_env && \
-  echo -n \" in$(get_virtual_env)\") \
+  echo -n \" in\[$sexy_bash_prompt_dir_color\]$(get_virtual_env)\[$sexy_bash_prompt_reset\]\") \
 \n\[$sexy_bash_prompt_reset\]\
 \[$sexy_bash_prompt_symbol_color\]$(sexy_bash_prompt_get_prompt_symbol) \[$sexy_bash_prompt_reset\]"
