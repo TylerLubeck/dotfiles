@@ -12,6 +12,7 @@ set comments=s1:/*,mb:\ *,elx:\ */
 set filetype=on
 set nu
 set relativenumber
+set backspace=2
 
 nnoremap <C-L> :nohl<CR><C-L>
 nnoremap <F3> :set hlsearch!<CR>
