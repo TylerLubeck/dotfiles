@@ -116,4 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 # Run twolfson/sexy-bash-prompt
-. ~/.bash_prompt
+. ~/.bash_profile
+export EDITOR=vim
+
