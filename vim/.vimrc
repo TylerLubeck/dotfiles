@@ -95,6 +95,6 @@ autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType ruby set makeprg=ruby\ %
 autocmd BufNewFile,BufRead *.R setf R 
 autocmd BufNewFile,BufRead *.R set makeprg=Rscript\ %\ &&\ open\ Rplots.pdf
-autocmd FileType python set colorcolumn=100
+autocmd FileType python set colorcolumn=80
 au BufNewFile,BufRead *.ums set filetype=ums
 au FileType javascript call JavaScriptFold()
