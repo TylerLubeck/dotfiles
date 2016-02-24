@@ -9,3 +9,5 @@ fi
 if [ -f $HOME/.bash_local ]; then
     . $HOME/.bash_local
 fi
+
+PROJECT_HOME=$HOME/Documents/Development

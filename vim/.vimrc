@@ -48,6 +48,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-endwise'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'walm/jshint.vim'
+Plugin 'fatih/vim-go'
 call vundle#end()
 filetype plugin indent on
 
@@ -95,6 +96,7 @@ autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType ruby set makeprg=ruby\ %
 autocmd BufNewFile,BufRead *.R setf R 
 autocmd BufNewFile,BufRead *.R set makeprg=Rscript\ %\ &&\ open\ Rplots.pdf
+autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 autocmd FileType python set colorcolumn=80
 au BufNewFile,BufRead *.ums set filetype=ums
 au FileType javascript call JavaScriptFold()
