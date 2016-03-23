@@ -53,10 +53,10 @@ Plugin 'chase/vim-ansible-yaml'
 Plugin 'alfredodeza/pytest.vim'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'hail2u/vim-css3-syntax.git'
+Plugin 'fatih/vim-go'
 
 "Requires npm instant-markdown-d. See the repo.
 Plugin 'suan/vim-instant-markdown' 
-
 call vundle#end()
 filetype plugin indent on
 
@@ -108,5 +108,5 @@ autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType ruby set makeprg=ruby\ %
 autocmd FileType * set colorcolumn=80
 au BufNewFile,BufRead *.jinja2 set filetype=htmljinja
-au FileType javascript call JavaScriptFold()
 autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
+au FileType javascript call JavaScriptFold()

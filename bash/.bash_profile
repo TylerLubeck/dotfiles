@@ -15,3 +15,6 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+mkdir -p $HOME/Documents/Development
+PROJECT_HOME=$HOME/Documents/Development
