@@ -48,6 +48,15 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-endwise'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'walm/jshint.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'chase/vim-ansible-yaml'
+Plugin 'alfredodeza/pytest.vim'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'hail2u/vim-css3-syntax.git'
+
+"Requires npm instant-markdown-d. See the repo.
+Plugin 'suan/vim-instant-markdown' 
+
 call vundle#end()
 filetype plugin indent on
 
@@ -63,6 +72,8 @@ set term=screen-256color
 
 highlight LineNr ctermfg=238 ctermbg=0
 highlight CursorLineNr ctermfg=gray ctermbg=0
+set cursorline
+set scrolloff=5
 
 au BufRead,BufNewFile *.ic set filetype=scheme
 set foldmethod=syntax
@@ -75,6 +86,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
 set splitbelow
 set splitright
@@ -93,8 +106,7 @@ autocmd BufNewFile,BufRead *.md set makeprg=grip
 autocmd FileType processing setlocal shiftwidth=4 tabstop=4
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType ruby set makeprg=ruby\ %
-autocmd BufNewFile,BufRead *.R setf R 
-autocmd BufNewFile,BufRead *.R set makeprg=Rscript\ %\ &&\ open\ Rplots.pdf
-autocmd FileType python set colorcolumn=80
-au BufNewFile,BufRead *.ums set filetype=ums
+autocmd FileType * set colorcolumn=80
+au BufNewFile,BufRead *.jinja2 set filetype=htmljinja
 au FileType javascript call JavaScriptFold()
+autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
