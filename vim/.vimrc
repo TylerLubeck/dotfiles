@@ -49,6 +49,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'walm/jshint.vim'
 Plugin 'fatih/vim-go'
+Plugin 'pearofducks/ansible-vim'
 call vundle#end()
 filetype plugin indent on
 
