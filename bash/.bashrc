@@ -115,10 +115,12 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
 # Run twolfson/sexy-bash-prompt
-. ~/.bash_profile
+source ~/.bash_profile
 export EDITOR=vim
 
 
 export NVM_DIR="/Users/tylerl/.nvm"
+export PIP_REQUIRE_VIRTUALENV=true
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
