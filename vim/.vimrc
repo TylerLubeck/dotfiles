@@ -54,6 +54,7 @@ Plugin 'alfredodeza/pytest.vim'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'hail2u/vim-css3-syntax.git'
 Plugin 'fatih/vim-go'
+Plugin 'pearofducks/ansible-vim'
 
 "Requires npm instant-markdown-d. See the repo.
 Plugin 'suan/vim-instant-markdown' 
