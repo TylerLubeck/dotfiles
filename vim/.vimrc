@@ -37,7 +37,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-markdown'
 Plugin 'scrooloose/nerdtree'
 Plugin 'JarrodCTaylor/vim-python-test-runner'
@@ -64,12 +65,12 @@ filetype plugin indent on
 "End Vundle
 
 syntax enable
+set term=screen-256color
 set t_ut=
 "let g:solarized_termcolors=16
 se t_Co=16
 set background=dark
 colorscheme solarized
-set term=screen-256color
 
 highlight LineNr ctermfg=238 ctermbg=0
 highlight CursorLineNr ctermfg=gray ctermbg=0
