@@ -1,114 +1,151 @@
-set nocompatible
-set hidden
-set wildmenu
-set showcmd
-set hlsearch
-set laststatus=2
-set confirm
-set pastetoggle=<F11>
-set smartindent
-set showmatch
-set comments=s1:/*,mb:\ *,elx:\ */
-set filetype=on
-set nu
-set relativenumber
-set backspace=2
+" vim: set foldmethod=marker foldlevel=0:
 
-nnoremap <C-L> :nohl<CR><C-L>
-nnoremap <F3> :set hlsearch!<CR>
+" General `set` commands {{{1
+set nocompatible                        " Because vi backwards compat is so 1980s
+set hidden                              " Hide an unsaved buffer rather than requesting a save
+set wildmenu                            
+set showcmd                             " Shows the last typed key in command mode
+set laststatus=2                        " Always show the status line
+set confirm                             " Reminds you to save when you quit
+set smartindent                         " Tries to be smart about indenting
+set showmatch                           " Highlights matching brackets/parans/quotes
+set comments=s1:/*,mb:\ *,elx:\ */      " idk
+set filetype=on                         " enables filetype detection
+set nu                                  " show linenumber of current line
+set relativenumber                      " show distance to lines near me
+set backspace=2                         " Make backspace behave appropriately
 
-set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set expandtab                           " Expands tabs to spaces
+set shiftwidth=4                        " >> and << indent by 4
+set softtabstop=4                       " How many spaces in a tab when editing
+set tabstop=4                           " How many spaces in a tab when displaying
 
+set lazyredraw                          " redraw only when we need to.
+set incsearch                           " search as characters are entered
+set ignorecase                          " Ignore case when search is all lowercase
+set smartcase                           " But pay attention to case if search is cased  
+set hlsearch                            " highlight matches
+"}}}1
+
+filetype plugin indent on
+syntax enable
+
+" Remappings {{{1
 nore ; :
 nore , ;
+"}}}1
 
-"Vundle
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"Vim Plug {{{1
+call plug#begin('~/.vim/plugged')
 
-Plugin 'gmarik/vundle'
-Plugin 'klen/python-mode'
-Plugin 'jimenezrick/vimerl'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/syntastic'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-markdown'
-Plugin 'scrooloose/nerdtree'
-Plugin 'JarrodCTaylor/vim-python-test-runner'
-Plugin 'vim-scripts/a.vim'
-Plugin 'elzr/vim-json'
-Plugin 'willpragnell/vim-reprocessed'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-endwise'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'walm/jshint.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'chase/vim-ansible-yaml'
-Plugin 'alfredodeza/pytest.vim'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'hail2u/vim-css3-syntax.git'
-Plugin 'fatih/vim-go'
-Plugin 'pearofducks/ansible-vim'
+"Utilities {{{2
+Plug 'mileszs/ack.vim'                                      " <leader> a -> search files using ack/ag
+Plug 'tpope/vim-fugitive'                                   " Git commands in VIM
+Plug 'tpope/vim-surround'                                   " Stuff for surrounding other stuff
+Plug 'tpope/vim-eunuch'                                     " :Rename, :Remove, etc
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }     " Directory Tree
+Plug 'scrooloose/syntastic'                                 " Syntax checking for most languages
+Plug 'Valloric/YouCompleteMe'                               " AutoCompletion
+"}}}2
 
-"Requires npm instant-markdown-d. See the repo.
-Plugin 'suan/vim-instant-markdown' 
-call vundle#end()
-filetype plugin indent on
+"Looks {{{2
+Plug 'altercation/vim-colors-solarized'  " Solarized colorscheme
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"}}}2
 
-"End Vundle
+"Language Utils {{{2
+Plug 'tpope/vim-markdown'                                           " For markdown code
+Plug 'tpope/vim-endwise'                                            " Adds end statements to blocks. e.g. if/fi in bash
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'htmljinja'] }     " HTML generation
+Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp', 'c++'] }            " Flips between .h and .c files
+Plug 'elzr/vim-json'                                                " Really good json syntax highlighting/folding/concealing
+Plug 'mtscout6/syntastic-local-eslint.vim'                          " Tells syntastic to use a local .eslintrc file
+Plug 'fatih/vim-go', { 'for': ['go', 'golang'] }                    " Golang autoindent, syntax checking, type checking
+Plug 'suan/vim-instant-markdown' , { 'for': ['markdown', 'md'] }    " Opens a browser window to display rendered markdown
+Plug 'tmhedberg/SimpylFold', { 'for': ['python'] }                  " Folding for Python
 
-syntax enable
+" Plug 'jelera/vim-javascript-syntax'                               " [DISABLED] javascript syntax. Unclear if syntastic handles this
+" Plug 'cakebaker/scss-syntax.vim'                                  " [DISABLED] scss syntax. Unclear if syntastic handles this
+" Plug 'klen/python-mode'                                           " [DISABLED] Seeing if syntastic and some other plugins can replace this
+"}}}2
+
+call plug#end()
+
+"}}}1
+
+" Configure Ack.vim {{{1
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
+"}}}1
+
+" Solaraized Setup {{{1
 set term=screen-256color
 set t_ut=
-"let g:solarized_termcolors=16
 se t_Co=16
 set background=dark
 colorscheme solarized
+"}}}1
 
+" Cursor Behavior {{{1
 highlight LineNr ctermfg=238 ctermbg=0
 highlight CursorLineNr ctermfg=gray ctermbg=0
 set cursorline
 set scrolloff=5
+"}}}1
 
-au BufRead,BufNewFile *.ic set filetype=scheme
-set foldmethod=syntax
-set foldlevelstart=1
-let javaScript_fold=1
-nmap ; :
-
-"For dealing with splits
+"Split Configs {{{1
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
-
 set splitbelow
 set splitright
-
-"For vim airline
+"}}}1
+"
+"Airling Config {{{1
 let g:airline#extensions#tabline#enabled = 1
+"}}}1
 
-"For python folds
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" Syntastic Config {{{1
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_always_populate_loc_list = 1
+"}}}1
+"
+" YouCompletMe Config {{{!
+let g:ycm_python_binary_path = 'python'                 " Uses venv python
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+"}}}1
 
-let g:pymode_lint_config = '$HOME/pylint.rc'
+" FileType Configs {{{1
+autocmd FileType * set colorcolumn=80
 
-"File types
-autocmd BufNewFile,BufRead *.md set makeprg=grip
-autocmd FileType processing setlocal shiftwidth=4 tabstop=4
+" New FileTypes {{{2
+au BufNewFile,BufRead *.jinja2 set filetype=htmljinja
+au BufNewFile,BufRead *.pyi set filetype=python         " For mypy stubs
+"}}}2
+
+" Ruby Config {{{2
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType ruby set makeprg=ruby\ %
-autocmd FileType * set colorcolumn=80
-au BufNewFile,BufRead *.jinja2 set filetype=htmljinja
-autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
+"}}}2
+
+" Javascript Config {{{2
+autocmd FileType javascript set colorcolumn=100
 au FileType javascript call JavaScriptFold()
+"}}}2
+
+" SCSS Configs {{{2
+autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
+"}}}2
+
+" Python Configs {{{2
+let g:SimpylFold_docstring_preview = 1
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+"}}}2
+"}}}1

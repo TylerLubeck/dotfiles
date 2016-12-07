@@ -12,6 +12,7 @@ unsetopt beep
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
+EDITOR=vim
 
 # Antigen setup
 # Grab antigen if it doesn't exist
@@ -52,3 +53,23 @@ if [[ -f ~/.zsh_local ]]; then
     source ~/.zsh_local
 fi
 
+# If pyenv exists, enable autocomplete
+if which pyenv > /dev/null; then 
+    eval "$(pyenv init -)"; 
+fi
+
+# If pyenv-virtualenv exists, enable autocomplete
+if which pyenv-virtualenv-init > /dev/null; then 
+    eval "$(pyenv virtualenv-init -)"; 
+fi
+
+GOPATH=$HOME/.gopath
+mkdir -p $GOPATH
+export GOPATH=$GOPATH
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Set up autojump
+ [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+ alias t=todo.sh
