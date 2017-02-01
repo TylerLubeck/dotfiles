@@ -73,3 +73,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
  alias t=todo.sh
+
+[[ -s "/Users/tyler/.gvm/scripts/gvm" ]] && source "/Users/tyler/.gvm/scripts/gvm"
