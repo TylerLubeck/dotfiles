@@ -63,9 +63,6 @@ if which pyenv-virtualenv-init > /dev/null; then
     eval "$(pyenv virtualenv-init -)"; 
 fi
 
-GOPATH=$HOME/.gopath
-mkdir -p $GOPATH
-export GOPATH=$GOPATH
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -73,3 +70,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
  alias t=todo.sh
+
+add_key() {
+    cat ~/.ssh/id_rsa.pub | ssh $1 'mkdir -p .ssh && cat >> .ssh/authorized_keys'
+}
