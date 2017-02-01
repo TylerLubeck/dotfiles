@@ -43,9 +43,10 @@ Plug 'mileszs/ack.vim'                                      " <leader> a -> sear
 Plug 'tpope/vim-fugitive'                                   " Git commands in VIM
 Plug 'tpope/vim-surround'                                   " Stuff for surrounding other stuff
 Plug 'tpope/vim-eunuch'                                     " :Rename, :Remove, etc
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }     " Directory Tree
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }      " Directory Tree
 Plug 'scrooloose/syntastic'                                 " Syntax checking for most languages
 Plug 'Valloric/YouCompleteMe'                               " AutoCompletion
+Plug 'SirVer/ultisnips'                                     " Snippets! Hurray!
 "}}}2
 
 "Looks {{{2
@@ -80,6 +81,14 @@ if executable('ag')
 endif
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
+"}}}1
+
+
+" Configure UltiSnips {{{1
+let g:UltiSnipsEditSplit = 'context'                " split based on context
+let g:UltiSnipsSnippetsDir = '~/.vim/ultisnips'     " Put snippets here
+let g:UltiSnipsEnableSnipMate = 0                   " Disable snipmate
+let g:UltiSnipsExpandTrigger="<c-j>"                " Don't fight YCM
 "}}}1
 
 " Solaraized Setup {{{1
