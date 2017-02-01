@@ -56,19 +56,16 @@ Plug 'vim-airline/vim-airline-themes'
 "}}}2
 
 "Language Utils {{{2
-Plug 'tpope/vim-markdown'                                           " For markdown code
-Plug 'tpope/vim-endwise'                                            " Adds end statements to blocks. e.g. if/fi in bash
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'htmljinja'] }     " HTML generation
-Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp', 'c++'] }            " Flips between .h and .c files
-Plug 'elzr/vim-json'                                                " Really good json syntax highlighting/folding/concealing
-Plug 'mtscout6/syntastic-local-eslint.vim'                          " Tells syntastic to use a local .eslintrc file
-Plug 'fatih/vim-go', { 'for': ['go', 'golang'] }                    " Golang autoindent, syntax checking, type checking
-Plug 'suan/vim-instant-markdown' , { 'for': ['markdown', 'md'] }    " Opens a browser window to display rendered markdown
-Plug 'tmhedberg/SimpylFold', { 'for': ['python'] }                  " Folding for Python
+Plug 'tpope/vim-markdown'                                                       " For markdown code
+Plug 'tpope/vim-endwise'                                                        " Adds end statements to blocks. e.g. if/fi in bash
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'htmljinja'] }                 " HTML generation
+Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp', 'c++'] }                        " Flips between .h and .c files
+Plug 'elzr/vim-json'                                                            " Really good json syntax highlighting/folding/concealing
+Plug 'mtscout6/syntastic-local-eslint.vim'                                      " Tells syntastic to use a local .eslintrc file
+Plug 'fatih/vim-go', { 'for': ['go', 'golang'] }                                " Golang autoindent, syntax checking, type checking
+Plug 'suan/vim-instant-markdown' , { 'for': ['markdown', 'md'] }                " Opens a browser window to display rendered markdown
+Plug 'tmhedberg/SimpylFold', { 'for': ['python'] }                              " Folding for Python
 
-" Plug 'jelera/vim-javascript-syntax'                               " [DISABLED] javascript syntax. Unclear if syntastic handles this
-" Plug 'cakebaker/scss-syntax.vim'                                  " [DISABLED] scss syntax. Unclear if syntastic handles this
-" Plug 'klen/python-mode'                                           " [DISABLED] Seeing if syntastic and some other plugins can replace this
 "}}}2
 
 call plug#end()
@@ -134,8 +131,8 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 autocmd FileType * set colorcolumn=80
 
 " New FileTypes {{{2
-au BufNewFile,BufRead *.jinja2 set filetype=htmljinja
-au BufNewFile,BufRead *.pyi set filetype=python         " For mypy stubs
+au BufNewFile,BufRead *.jinja2  set filetype=htmljinja
+au BufNewFile,BufRead *.pyi     set filetype=python         " For mypy stubs
 "}}}2
 
 " Ruby Config {{{2
@@ -145,7 +142,7 @@ autocmd FileType ruby set makeprg=ruby\ %
 
 " Javascript Config {{{2
 autocmd FileType javascript set colorcolumn=100
-au FileType javascript call JavaScriptFold()
+"au FileType javascript call JavaScriptFold()
 "}}}2
 
 " SCSS Configs {{{2
