@@ -9,7 +9,7 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 unsetopt beep
-bindkey -v
+bindkey -e
 # End of lines configured by zsh-newuser-install
 
 EDITOR=vim
@@ -74,3 +74,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 add_key() {
     cat ~/.ssh/id_rsa.pub | ssh $1 'mkdir -p .ssh && cat >> .ssh/authorized_keys'
 }
+
+[[ -s "/Users/tyler/.gvm/scripts/gvm" ]] && source "/Users/tyler/.gvm/scripts/gvm"
