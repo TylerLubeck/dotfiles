@@ -17,7 +17,7 @@ EDITOR=vim
 # Antigen setup
 # Grab antigen if it doesn't exist
 if [[ ! -f ~/.antigen.zsh ]]; then
-    curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/.antigen.zsh
+    curl https://cdn.rawgit.com/zsh-users/antigen/v1.4.0/bin/antigen.zsh > ~/.antigen.zsh
 fi
 
 source ~/.antigen.zsh
@@ -28,7 +28,6 @@ antigen bundles << EOBUNDLES
     brew
     pip
     virtualenv
-    virtualenvwrapper
 
     # joel-porquet/zsh-dircolors-solarized.git
     gerges/oh-my-zsh-jira-plus
