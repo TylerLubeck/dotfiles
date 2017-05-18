@@ -45,7 +45,8 @@ Plug 'tpope/vim-surround'                                   " Stuff for surround
 Plug 'tpope/vim-eunuch'                                     " :Rename, :Remove, etc
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }      " Directory Tree
 Plug 'scrooloose/syntastic'                                 " Syntax checking for most languages
-Plug 'Valloric/YouCompleteMe'                               " AutoCompletion
+" Plug 'Valloric/YouCompleteMe'                              " AutoCompletion [DISABLED]
+Plug 'puremourning/YouCompleteMe', { 'branch': 'fast-start' } " AutoCompletion [Checking speed compared to the above]
 Plug 'SirVer/ultisnips'                                     " Snippets! Hurray!
 "}}}2
 
@@ -65,6 +66,7 @@ Plug 'mtscout6/syntastic-local-eslint.vim'                                      
 Plug 'fatih/vim-go', { 'for': ['go', 'golang'] }                                " Golang autoindent, syntax checking, type checking
 Plug 'suan/vim-instant-markdown' , { 'for': ['markdown', 'md'] }                " Opens a browser window to display rendered markdown
 Plug 'tmhedberg/SimpylFold', { 'for': ['python'] }                              " Folding for Python
+Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }                       " Folding and highlighting for Javascript
 
 "}}}2
 
@@ -131,18 +133,18 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 autocmd FileType * set colorcolumn=80
 
 " New FileTypes {{{2
-au BufNewFile,BufRead *.jinja2  set filetype=htmljinja
-au BufNewFile,BufRead *.pyi     set filetype=python         " For mypy stubs
+au BufNewFile,BufRead *.jinja2  setlocal filetype=htmljinja
+au BufNewFile,BufRead *.pyi     setlocal filetype=python    " For mypy stubs
 "}}}2
 
 " Ruby Config {{{2
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
-autocmd FileType ruby set makeprg=ruby\ %
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 makeprg=ruby\ %
 "}}}2
 
 " Javascript Config {{{2
-autocmd FileType javascript set colorcolumn=100
-"au FileType javascript call JavaScriptFold()
+autocmd FileType javascript setlocal colorcolumn=100 foldmethod=syntax
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
 "}}}2
 
 " SCSS Configs {{{2
