@@ -48,6 +48,7 @@ Plug 'scrooloose/syntastic'                                 " Syntax checking fo
 " Plug 'Valloric/YouCompleteMe'                              " AutoCompletion [DISABLED]
 Plug 'puremourning/YouCompleteMe', { 'branch': 'fast-start' } " AutoCompletion [Checking speed compared to the above]
 Plug 'SirVer/ultisnips'                                     " Snippets! Hurray!
+Plug 'christoomey/vim-tmux-navigator'                       " For TMUX Integration
 "}}}2
 
 "Looks {{{2
