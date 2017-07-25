@@ -75,3 +75,5 @@ add_key() {
 }
 
 [[ -s "/Users/tyler/.gvm/scripts/gvm" ]] && source "/Users/tyler/.gvm/scripts/gvm"
+
+it2prof() { echo -e "\033]1337;SetProfile=$1\a" }

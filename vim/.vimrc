@@ -97,6 +97,7 @@ set t_ut=
 se t_Co=16
 set background=dark
 colorscheme solarized
+nnoremap <Leader>b :let &background = ( &background == "dark" ? "light" : "dark" )<CR>
 "}}}1
 
 " Cursor Behavior {{{1
@@ -154,7 +155,7 @@ autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldma
 
 " Python Configs {{{2
 let g:SimpylFold_docstring_preview = 1
-autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr filetype=python
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 "}}}2
 "}}}1
