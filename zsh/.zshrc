@@ -30,7 +30,7 @@ antigen bundles << EOBUNDLES
     virtualenv
 
     # joel-porquet/zsh-dircolors-solarized.git
-    gerges/oh-my-zsh-jira-plus
+    # gerges/oh-my-zsh-jira-plus
     zlsun/solarized-man.git
     Tarrasch/zsh-autoenv
     zsh-users/zsh-completions src
@@ -101,3 +101,7 @@ if [[ -z "$TMUX" ]]; then
 
 fi
 
+[[ -s "/Users/tyler/.gvm/scripts/gvm" ]] && source "/Users/tyler/.gvm/scripts/gvm"
+
+export GOPATH="${HOME}/golang"
+export PATH="${GOPATH}/bin:${PATH}"
