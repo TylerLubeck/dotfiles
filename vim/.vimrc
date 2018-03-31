@@ -3,13 +3,12 @@
 " General `set` commands {{{1
 set nocompatible                        " Because vi backwards compat is so 1980s
 set hidden                              " Hide an unsaved buffer rather than requesting a save
-set wildmenu                            
+set wildmenu                            " Tab complete menu items
 set showcmd                             " Shows the last typed key in command mode
 set laststatus=2                        " Always show the status line
 set confirm                             " Reminds you to save when you quit
 set smartindent                         " Tries to be smart about indenting
 set showmatch                           " Highlights matching brackets/parans/quotes
-set comments=s1:/*,mb:\ *,elx:\ */      " idk
 set filetype=on                         " enables filetype detection
 set nu                                  " show linenumber of current line
 set relativenumber                      " show distance to lines near me
@@ -46,15 +45,14 @@ Plug 'tpope/vim-eunuch'                                     " :Rename, :Remove, 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }      " Directory Tree
 Plug 'scrooloose/syntastic'                                 " Syntax checking for most languages
 " Plug 'Valloric/YouCompleteMe'                              " AutoCompletion [DISABLED]
-Plug 'puremourning/YouCompleteMe', { 'branch': 'fast-start' } " AutoCompletion [Checking speed compared to the above]
+" Plug 'puremourning/YouCompleteMe', { 'branch': 'fast-start' } " AutoCompletion [Checking speed compared to the above]
 Plug 'SirVer/ultisnips'                                     " Snippets! Hurray!
 Plug 'christoomey/vim-tmux-navigator'                       " For TMUX Integration
 "}}}2
 
 "Looks {{{2
-Plug 'altercation/vim-colors-solarized'  " Solarized colorscheme
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug '~/dotfiles/vendor/falcon'
+Plug 'itchyny/lightline.vim'
 "}}}2
 
 "Language Utils {{{2
@@ -91,13 +89,28 @@ let g:UltiSnipsEnableSnipMate = 0                   " Disable snipmate
 let g:UltiSnipsExpandTrigger="<c-j>"                " Don't fight YCM
 "}}}1
 
-" Solaraized Setup {{{1
+" Colorscheme Setup {{{1
 set term=screen-256color
 set t_ut=
-se t_Co=16
+colorscheme falcon
+if !has('gui_running')
+  set t_Co=256
+else
+  set t_Co=16
+endif
 set background=dark
-colorscheme solarized
-nnoremap <Leader>b :let &background = ( &background == "dark" ? "light" : "dark" )<CR>
+highlight ColorColumn guibg=DarkGrey ctermbg=237
+
+
+"}}}1
+
+
+" Lightline Setup {{{1
+let g:falcon_lightline = 1
+set noshowmode
+let g:lightline = { 
+      \ 'colorscheme':'falcon',
+      \ }
 "}}}1
 
 " Cursor Behavior {{{1
@@ -116,9 +129,6 @@ set splitbelow
 set splitright
 "}}}1
 "
-"Airling Config {{{1
-let g:airline#extensions#tabline#enabled = 1
-"}}}1
 
 " Syntastic Config {{{1
 let g:syntastic_javascript_checkers = ['eslint']

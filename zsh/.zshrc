@@ -4,6 +4,7 @@ zstyle :compinstall filename '/Users/tylerl/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+#
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -12,7 +13,7 @@ unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-EDITOR=vim
+export EDITOR=vim
 
 # Antigen setup
 # Grab antigen if it doesn't exist
@@ -25,19 +26,16 @@ antigen use oh-my-zsh
 
 antigen bundles << EOBUNDLES
     git
-    brew
-    pip
-    virtualenv
+    #brew
 
     # joel-porquet/zsh-dircolors-solarized.git
     # gerges/oh-my-zsh-jira-plus
-    zlsun/solarized-man.git
-    Tarrasch/zsh-autoenv
-    zsh-users/zsh-completions src
+    #zlsun/solarized-man.git
+    #zsh-users/zsh-completions src
     zsh-users/zsh-syntax-highlighting
 EOBUNDLES
 
-antigen theme TylerLubeck/oh-my-zsh-seeker-theme seeker
+antigen theme TylerLubeck/zsh-theme zsh-theme
 
 antigen apply
 # End Antigen setup
@@ -52,21 +50,29 @@ if [[ -f ~/.zsh_local ]]; then
     source ~/.zsh_local
 fi
 
-# If pyenv exists, enable autocomplete
-if which pyenv > /dev/null; then 
-    eval "$(pyenv init -)"; 
-fi
-
-# If pyenv-virtualenv exists, enable autocomplete
-if which pyenv-virtualenv-init > /dev/null; then 
-    eval "$(pyenv virtualenv-init -)"; 
-fi
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Set up autojump
- [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+function j() {
+    (( $+commands[brew] )) && {
+        local pfx=$(brew --prefix)
+        [[ -f "$pfx/etc/autojump.sh" ]] && . "$pfx/etc/autojump.sh"
+        j "$@"
+    }
+}
+
+pyenv() {
+    if which pyenv > /dev/null; then 
+        eval "$( command pyenv init - )"; 
+    fi
+
+    if which pyenv-virtualenv-init > /dev/null; then 
+        eval "$(pyenv virtualenv-init -)"; 
+    fi
+
+    pyenv "$@"
+}
 
 [[ -s "/Users/tyler/.gvm/scripts/gvm" ]] && source "/Users/tyler/.gvm/scripts/gvm"
 
@@ -101,7 +107,9 @@ if [[ -z "$TMUX" ]]; then
 
 fi
 
-[[ -s "/Users/tyler/.gvm/scripts/gvm" ]] && source "/Users/tyler/.gvm/scripts/gvm"
+alias t=todo.sh
 
 export GOPATH="${HOME}/golang"
 export PATH="${GOPATH}/bin:${PATH}"
+
+source ~/dotfiles/vendor/falcon/exa/EXA_COLORS  # Falcon colors for exa
