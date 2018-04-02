@@ -76,11 +76,6 @@ pyenv() {
 
 [[ -s "/Users/tyler/.gvm/scripts/gvm" ]] && source "/Users/tyler/.gvm/scripts/gvm"
 
-# OPAM configuration
-. /Users/tylerl/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-it2prof() { echo -e "\033]1337;SetProfile=$1\a" }
-
 # Stolen from https://development.robinwinslow.uk/2012/07/20/tmux-and-ssh-auto-login-with-ssh-agent-finally/
 
 if [[ -z "$TMUX" ]]; then
@@ -111,5 +106,3 @@ alias t=todo.sh
 
 export GOPATH="${HOME}/golang"
 export PATH="${GOPATH}/bin:${PATH}"
-
-source ~/dotfiles/vendor/falcon/exa/EXA_COLORS  # Falcon colors for exa
