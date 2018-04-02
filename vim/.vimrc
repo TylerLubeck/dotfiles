@@ -51,7 +51,8 @@ Plug 'christoomey/vim-tmux-navigator'                       " For TMUX Integrati
 "}}}2
 
 "Looks {{{2
-Plug '~/dotfiles/vendor/falcon'
+" falcon installed from two places, depending on machine
+Plug 'fenetikm/falcon'
 Plug 'itchyny/lightline.vim'
 "}}}2
 
