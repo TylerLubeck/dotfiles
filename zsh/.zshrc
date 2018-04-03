@@ -62,17 +62,15 @@ function j() {
     }
 }
 
-pyenv() {
-    if which pyenv > /dev/null; then 
-        eval "$( command pyenv init - )"; 
-    fi
+# configure pyenv
+if which pyenv > /dev/null; then 
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+    eval "$( command pyenv init - )"; 
+fi
 
-    if which pyenv-virtualenv-init > /dev/null; then 
-        eval "$(pyenv virtualenv-init -)"; 
-    fi
-
-    pyenv "$@"
-}
+if which pyenv-virtualenv-init > /dev/null; then 
+    eval "$(pyenv virtualenv-init -)"; 
+fi
 
 [[ -s "/Users/tyler/.gvm/scripts/gvm" ]] && source "/Users/tyler/.gvm/scripts/gvm"
 
